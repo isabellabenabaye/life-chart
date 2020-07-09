@@ -24,7 +24,7 @@ life_data <- life_data %>%
                          TRUE ~ "Time left")))
 
 # Waffle chart-----
-life_waffle <- life_data %>%
+life_in_months <- life_data %>%
   count(era) %>% ## the count of each era is the number of months in that era
   ggplot(aes(fill = era, values = n)) +
   geom_waffle(color = "#F7F7F7", n_rows = 12, size = 1, flip = TRUE) + ## make each row a year/12 months
@@ -35,7 +35,7 @@ life_waffle <- life_data %>%
         plot.background = element_rect(fill = "#F7F7F7", color = "#F7F7F7")) +
   theme_enhance_waffle()
 
-life_waffle
+life_in_months
 
 # Save the chart
-life_waffle + ggsave("life_waffle.png", device = "png", type = "cairo", width = 15, height = 25, dpi = 300)
+life_in_months + ggsave("life_in_months.png", device = "png", type = "cairo", width = 15, height = 25, dpi = 300)
